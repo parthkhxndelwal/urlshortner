@@ -1,16 +1,22 @@
 const express = require("express");
 const path = require("path");
+const dotenv=require('dotenv').config();
 const urlRoute = require("./routes/url");
 const staticRoute = require("./routes/staticRouter");
 const { connectToMongoDB } = require("./connect");
 const URL = require("./models/url");
 const app = express();
-const PORT = 8001;
+const PORT = process.env.PORT || 8001; 
 
-connectToMongoDB("mongodb://localhost:27017/urlShortner").then(() => {
-  console.log("Connected to MongoDB");
-});
+connectToMongoDB(process.env.MONGODB_URI)
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+  });
 
+app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
 
@@ -20,15 +26,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/url", urlRoute);
 app.use("/", staticRoute);
-
-// app.get("/test", async (req, res) => {
-
-//   const allUrls = await URL.find({});
-//   return res.render("home", {
-//     // Pass the data as the second argument
-//     urls: allUrls,
-//   });
-// });
 
 app.get("/url/:shortId", async (req, res) => {
   const shortId = req.params.shortId;

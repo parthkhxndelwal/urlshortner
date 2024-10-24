@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: #f4f7f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin: 0;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #005aab;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  width: 100%;
+}
+
+button {
+  padding: 12px;
+  background-color: #4db848;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #43a33d;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #005aab;
+  color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.generated-url {
+  margin: 15px 0;
+  text-align: center;
+  font-size: 18px;
+  color: #4db848;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  width: 100%;
+}
+
+.generated-url a {
+  color: #005aab;
+  text-decoration: none;
+}
+
+.generated-url a:hover {
+  text-decoration: underline;
+}
+
+/* New Styles for Redirect URL */
+td {
+  max-width: 200px; /* Set max width for redirect URL */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Optional: add ellipsis */
+  white-space: normal; /* Allow wrapping */
+}
+
+td a {
+  display: block; /* Make the link block level to respect max-width */
+  word-wrap: break-word; /* Ensure words wrap */
+  overflow-wrap: break-word; /* For better browser support */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .container {
+      padding: 20px; /* Reduced padding for smaller screens */
+  }
+
+  h1 {
+      font-size: 24px; /* Adjust font size for h1 */
+  }
+
+  label,
+  input[type="text"],
+  button {
+      font-size: 14px; /* Smaller font size for form elements */
+  }
+
+  button {
+      padding: 10px; /* Reduced button padding */
+  }
+
+  th,
+  td {
+      font-size: 14px; /* Adjust font size for table elements */
+  }
+
+  .generated-url {
+      font-size: 16px; /* Adjust font size for generated URL */
+  }
+}
