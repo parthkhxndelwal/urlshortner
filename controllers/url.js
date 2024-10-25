@@ -15,7 +15,6 @@ async function handleGenerateNewShortURL(req, res) {
     return res.status(400).json({ error: "URL is required" });
   }
 
-  // Correctly generate the shortID
   const shortID = generateShortID();
 
   // Create the URL document in MongoDB
@@ -24,11 +23,16 @@ async function handleGenerateNewShortURL(req, res) {
     redirectURL: body.url,
     visitHistory: [],
   });
- return res.render('home',{
-     id:shortID
- })
 
+  // Get the current host
+  const host = req.get('host');
+
+  return res.render('home', {
+    id: shortID,
+    host: host
+  });
 }
+
 async function handleGetAnalytics(req, res) {
   const shortId = req.params.shortId;
   const result = await URL.findOne({ shortId });
