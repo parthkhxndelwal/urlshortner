@@ -8,7 +8,7 @@ const URL = require("./models/url");
 const app = express();
 const PORT = process.env.PORT || 8001; 
 
-connectToMongoDB(process.env.MONGODB_URI)
+connectToMongoDB("mongodb+srv://deepanshunegi98:dsL63fIhFC5aKLuY@cluster0.h5f4x.mongodb.net/urlShortner?retryWrites=true&w=majority")
   .then(() => {
     console.log("Connected to MongoDB");
   })
