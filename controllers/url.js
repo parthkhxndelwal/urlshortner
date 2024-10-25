@@ -1,6 +1,12 @@
-const shortid = require("shortid");
+// const shortid = require("shortid");
 const URL = require("../models/url");
-const crypto=require('crypto');
+const crypto = require('crypto');
+
+
+function generateShortID() {
+  // Generate a 2-byte random value and convert it to a hex string (4 characters)
+  return crypto.randomBytes(2).toString('hex');
+}
 
 async function handleGenerateNewShortURL(req, res) {
   const body = req.body;
@@ -10,7 +16,7 @@ async function handleGenerateNewShortURL(req, res) {
   }
 
   // Correctly generate the shortID
-  const shortID = shortid();        
+  const shortID = generateShortID();
 
   // Create the URL document in MongoDB
   await URL.create({
